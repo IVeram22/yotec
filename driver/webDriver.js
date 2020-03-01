@@ -18,7 +18,7 @@ var WebDriver = function(baseURL='http://qa.yotec.net/') {
       if (element.isDisplayed()) {
         return true;
       }
-    });
+    }, 60000);
     return false;
   };
 
@@ -30,7 +30,7 @@ var WebDriver = function(baseURL='http://qa.yotec.net/') {
         );
         return true;
       }
-    });
+    }, 60000);
   };
 
   this.waitAndInput = function(element, inputText) {
@@ -41,7 +41,7 @@ var WebDriver = function(baseURL='http://qa.yotec.net/') {
         );
         return true;
       }
-    });
+    }, 60000);
   };
 
   this.waitAndClear = function(element) {
@@ -52,7 +52,7 @@ var WebDriver = function(baseURL='http://qa.yotec.net/') {
         );
         return true;
       }
-    });
+    }, 60000);
   };
 
   this.assertTitle = function(expectedTitle) {
