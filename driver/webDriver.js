@@ -44,10 +44,10 @@ var WebDriver = function(baseURL='http://qa.yotec.net/') {
     });
   };
 
-  this.waitAndClear = function() {
+  this.waitAndClear = function(element) {
     browser.driver.wait(function() {
       if (element.isDisplayed()) {
-        element.sendKeys(inputText).then(
+        element.clear().then(
           console.log("[Clear Text]::[null] -> " + element.locator())
         );
         return true;

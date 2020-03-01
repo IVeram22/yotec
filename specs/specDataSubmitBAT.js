@@ -1,15 +1,33 @@
 "use strict";
 
 
-var navigateToHomePage = require('../blocks/navigateToHomePage.js');
-var navigateToWeAreWabashPage = require('../blocks/navigateToWeAreWabashPage.js');
-var sendMsgHowCanWeHelp = require('../blocks/sendMsgHowCanWeHelp.js');
+var WebDriver = require('../driver/webDriver.js');
+var WeAreWabashPage = require('../pages/weAreWabashPage.js');
+var Navigator = require('../blocks/navigator/navigator.js');
+var HowCanWeHelpMSG = require('../blocks/sendMSG/howCanWeHelp.js');
 
 
 describe('BAT: Data submit', function() {
+  var webDriver = new WebDriver('http://qa.yotec.net/');
+  console.log(webDriver._baseURL);
+  var navigator = new Navigator(webDriver);
+  var weAreWabashPageObject = new WeAreWabashPage(webDriver);
+  var howCanWeHelpMSG = new HowCanWeHelpMSG(weAreWabashPageObject);
+
+  beforeEach(function() {
+    webDriver.turnOffWaitingAngular();
+    webDriver.openBaseURL();
+  });
+
   it('HOW CAN WE HELP? Submit form', function() {
-    navigateToHomePage();
-    navigateToWeAreWabashPage();
-    sendMsgHowCanWeHelp("LLLL");
+    navigator.setPage(weAreWabashPageObject);
+    navigator.execute();
+    howCanWeHelpMSG
+      .setName("Ivan")
+      .setCompany("Veramyou")
+      .setEmail("verem@gmail.com")
+      .setPhone("+316391612337")
+      .setComments("Some comments ... ")
+      .execute();
   });
 });
