@@ -6,6 +6,7 @@ var HomePage = require('../pages/homePage.js');
 var WeAreWabashPage = require('../pages/weAreWabashPage.js');
 var TraditionOfInnovationPage = require('../pages/traditionOfInnovationPage.js');
 var Navigator = require('../blocks/navigator/navigator.js');
+var HowCanWeHelpMSG = require('../blocks/sendMSG/howCanWeHelp.js');
 
 
 describe('BAT: Navigation through the main menu items', function() {
@@ -15,6 +16,7 @@ describe('BAT: Navigation through the main menu items', function() {
   var homePageObject = new HomePage(webDriver);
   var weAreWabashPageObject = new WeAreWabashPage(webDriver);
   var traditionOfInnovationPageObject = new TraditionOfInnovationPage(webDriver);
+  var howCanWeHelpMSG = new HowCanWeHelpMSG(weAreWabashPageObject);
 
   beforeEach(function() {
     webDriver.turnOffWaitingAngular();
@@ -27,13 +29,12 @@ describe('BAT: Navigation through the main menu items', function() {
   });
 
   it('We Are Wabash', function() {
-    console.log();
     navigator.setPage(weAreWabashPageObject);
     navigator.execute();
   });
 
   it('Tradition of Innovation', function() {
-    navigator.setPage(weAreWabashPageObject);
+    navigator.setPage(traditionOfInnovationPageObject);
     navigator.execute();
   });
 });
